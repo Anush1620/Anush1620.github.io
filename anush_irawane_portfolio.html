@@ -1,0 +1,770 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Anush Irawane — Data Analyst Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --navy: #0f2044;
+    --navy-mid: #1a3460;
+    --accent: #2563b0;
+    --accent-light: #dbeafe;
+    --gold: #c4933a;
+    --text: #1a1a2e;
+    --text-muted: #5c6070;
+    --bg: #fafaf8;
+    --surface: #ffffff;
+    --border: #e4e8f0;
+    --section-gap: 96px;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 5%;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600;
+    color: var(--navy); letter-spacing: 0.02em;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-size: 13px; font-weight: 400; letter-spacing: 0.05em;
+    text-transform: uppercase; color: var(--text-muted);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    padding: 100px 5% 60px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; top: 0; right: 0;
+    width: 55%; height: 100%;
+    background: linear-gradient(135deg, #e8f0fb 0%, #f0f4fd 50%, #fafaf8 100%);
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+    z-index: 0;
+  }
+  .hero-content { position: relative; z-index: 1; max-width: 640px; }
+  .hero-eyebrow {
+    font-size: 12px; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 20px;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .hero-eyebrow::before {
+    content: ''; display: inline-block;
+    width: 28px; height: 1.5px; background: var(--accent);
+  }
+  h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(48px, 6vw, 76px);
+    font-weight: 600; line-height: 1.05;
+    color: var(--navy); margin-bottom: 24px;
+    letter-spacing: -0.01em;
+  }
+  .hero-sub {
+    font-size: 17px; color: var(--text-muted);
+    max-width: 500px; margin-bottom: 40px;
+    line-height: 1.8;
+  }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary {
+    padding: 13px 28px;
+    background: var(--navy); color: #fff;
+    border: none; border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--accent); transform: translateY(-1px); }
+  .btn-outline {
+    padding: 12px 28px;
+    background: transparent; color: var(--navy);
+    border: 1.5px solid var(--navy); border-radius: 4px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 500;
+    cursor: pointer; text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+  .btn-outline:hover { background: var(--navy); color: #fff; transform: translateY(-1px); }
+
+  .hero-stats {
+    display: flex; gap: 40px; margin-top: 56px;
+    padding-top: 40px; border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 36px; font-weight: 600;
+    color: var(--navy); line-height: 1;
+  }
+  .stat-label { font-size: 12px; color: var(--text-muted); margin-top: 4px; }
+
+  /* SECTIONS */
+  section { padding: var(--section-gap) 5%; }
+  section:nth-child(even) { background: var(--surface); }
+
+  .section-header { margin-bottom: 56px; }
+  .section-tag {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.15em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 12px; display: block;
+  }
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4vw, 46px);
+    font-weight: 600; color: var(--navy);
+    line-height: 1.1; letter-spacing: -0.01em;
+  }
+  .section-line {
+    width: 48px; height: 2px;
+    background: var(--gold); margin-top: 16px;
+  }
+
+  /* ABOUT */
+  .about-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: start;
+  }
+  .about-text p { color: var(--text-muted); margin-bottom: 20px; font-size: 16px; }
+  .awards-list { margin-top: 32px; }
+  .award-item {
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 14px 0; border-bottom: 1px solid var(--border);
+  }
+  .award-icon {
+    width: 32px; height: 32px; flex-shrink: 0;
+    background: #fff9ee; border: 1px solid #f5dca0;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 14px;
+  }
+  .award-title { font-size: 13px; font-weight: 500; color: var(--text); }
+  .award-meta { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  .about-highlights { display: flex; flex-direction: column; gap: 20px; }
+  .highlight-card {
+    background: var(--bg); border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 20px 22px;
+  }
+  .highlight-card h4 { font-size: 14px; font-weight: 500; color: var(--navy); margin-bottom: 6px; }
+  .highlight-card p { font-size: 13px; color: var(--text-muted); line-height: 1.6; }
+
+  /* SKILLS */
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+  .skill-category {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px; padding: 28px;
+  }
+  .skill-category-title {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 16px;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .skill-tag {
+    padding: 6px 14px;
+    background: #f0f4fc; color: #1a3460;
+    border-radius: 20px; font-size: 13px;
+    font-weight: 400; border: 1px solid #cdd9f0;
+  }
+  .skill-tag.core {
+    background: var(--navy); color: #e8f0fb;
+    border-color: var(--navy);
+  }
+
+  /* EXPERIENCE */
+  .exp-container { max-width: 800px; }
+  .exp-card {
+    border: 1px solid var(--border); border-radius: 12px;
+    padding: 36px; background: var(--surface);
+    position: relative; overflow: hidden;
+  }
+  .exp-card::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 4px; height: 100%; background: var(--accent);
+  }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px; }
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px; font-weight: 600; color: var(--navy);
+  }
+  .exp-date {
+    font-size: 12px; color: var(--text-muted);
+    background: var(--bg); padding: 4px 12px;
+    border: 1px solid var(--border); border-radius: 20px;
+    white-space: nowrap;
+  }
+  .exp-company { font-size: 14px; color: var(--accent); font-weight: 500; margin-bottom: 4px; }
+  .exp-client { font-size: 13px; color: var(--text-muted); margin-bottom: 24px; }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+  .exp-bullets li {
+    display: flex; gap: 14px; align-items: flex-start;
+    font-size: 14px; color: var(--text-muted);
+  }
+  .exp-bullets li::before {
+    content: ''; display: inline-block; flex-shrink: 0;
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--gold); margin-top: 8px;
+  }
+
+  /* PROJECTS */
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+  .project-card {
+    border: 1px solid var(--border); border-radius: 12px;
+    padding: 32px; background: var(--surface);
+    display: flex; flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .project-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(15,32,68,0.08); }
+  .project-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 48px; font-weight: 600;
+    color: var(--border); line-height: 1;
+    margin-bottom: 16px;
+  }
+  .project-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px; font-weight: 600;
+    color: var(--navy); margin-bottom: 12px;
+    line-height: 1.2;
+  }
+  .project-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; flex: 1; line-height: 1.7; }
+  .project-tech { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+  .tech-tag {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.05em;
+    padding: 4px 10px; border-radius: 4px;
+    background: var(--accent-light); color: var(--accent);
+    border: 1px solid #c3d8f5;
+  }
+  .project-link {
+    font-size: 13px; font-weight: 500; color: var(--accent);
+    text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    border-top: 1px solid var(--border); padding-top: 16px;
+    transition: gap 0.2s;
+  }
+  .project-link:hover { gap: 10px; }
+
+  /* EDUCATION */
+  .edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .edu-card {
+    border: 1px solid var(--border); border-radius: 10px;
+    padding: 28px; background: var(--surface);
+  }
+  .edu-degree {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px; font-weight: 600;
+    color: var(--navy); margin-bottom: 8px;
+  }
+  .edu-school { font-size: 14px; color: var(--text-muted); margin-bottom: 16px; }
+  .edu-meta { display: flex; gap: 16px; }
+  .edu-badge {
+    font-size: 12px; font-weight: 500;
+    padding: 4px 12px; border-radius: 20px;
+  }
+  .edu-badge.year { background: #f0f4fc; color: var(--accent); border: 1px solid #cdd9f0; }
+  .edu-badge.gpa { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+
+  /* CERTIFICATIONS */
+  .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+  .cert-card {
+    border: 1px solid var(--border); border-radius: 8px;
+    padding: 20px 22px; background: var(--surface);
+    display: flex; gap: 16px; align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+  .cert-card:hover { border-color: var(--accent); }
+  .cert-icon {
+    width: 36px; height: 36px; flex-shrink: 0;
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 700;
+  }
+  .cert-icon.google { background: #fef3c7; color: #92400e; }
+  .cert-icon.deloitte { background: #eff6ff; color: #1d4ed8; }
+  .cert-icon.ms { background: #f0fdf4; color: #166534; }
+  .cert-icon.pmi { background: #fdf4ff; color: #7e22ce; }
+  .cert-icon.openai { background: #fff7ed; color: #c2410c; }
+  .cert-icon.prompt { background: #fef2f2; color: #991b1b; }
+  .cert-title { font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.4; }
+  .cert-issuer { font-size: 12px; color: var(--text-muted); margin-top: 3px; }
+  .cert-status {
+    font-size: 10px; font-weight: 500; padding: 2px 8px;
+    border-radius: 10px; margin-top: 6px; display: inline-block;
+  }
+  .cert-status.progress { background: #fff7ed; color: #c2410c; border: 1px solid #fed7aa; }
+  .cert-status.done { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; }
+
+  /* CONTACT */
+  .contact-wrapper {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 80px; align-items: center;
+  }
+  .contact-intro h2 { margin-bottom: 16px; }
+  .contact-intro p { font-size: 16px; color: var(--text-muted); line-height: 1.8; max-width: 400px; }
+  .contact-links { display: flex; flex-direction: column; gap: 14px; }
+  .contact-link {
+    display: flex; align-items: center; gap: 16px;
+    padding: 18px 22px;
+    border: 1px solid var(--border); border-radius: 10px;
+    background: var(--surface); text-decoration: none;
+    color: var(--text); transition: all 0.2s;
+  }
+  .contact-link:hover { border-color: var(--accent); transform: translateX(4px); }
+  .contact-link-icon {
+    width: 40px; height: 40px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 13px; flex-shrink: 0;
+  }
+  .cl-email { background: #eff6ff; color: #1d4ed8; }
+  .cl-linkedin { background: #eff6ff; color: #0a66c2; }
+  .cl-github { background: #f8f8f8; color: #24292f; }
+  .cl-phone { background: #f0fdf4; color: #166534; }
+  .contact-link-info .link-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.08em; }
+  .contact-link-info .link-val { font-size: 14px; font-weight: 500; color: var(--navy); margin-top: 2px; }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 32px 5%;
+    border-top: 1px solid var(--border);
+    font-size: 13px; color: var(--text-muted);
+  }
+
+  /* FADE-IN ANIMATION */
+  .reveal {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  @media (max-width: 768px) {
+    .about-grid, .projects-grid, .edu-grid, .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
+    .hero::before { display: none; }
+    .nav-links { display: none; }
+    .hero-stats { gap: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">AI — Portfolio</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-content reveal">
+    <div class="hero-eyebrow">Data Analyst &amp; GIS Professional</div>
+    <h1>Anush<br>Irawane</h1>
+    <p class="hero-sub">
+      Turning complex spatial and business data into clear, actionable insights — at TCS, working on Apple Maps and beyond.
+    </p>
+    <div class="hero-ctas">
+      <a href="https://www.linkedin.com/in/anush-irawane-445397315" target="_blank" class="btn-primary">Get in Touch</a>
+      <a href="https://github.com/Anush1620" target="_blank" class="btn-outline">View Projects</a>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">1+</div>
+        <div class="stat-label">Year at TCS</div>
+      </div>
+      <div>
+        <div class="stat-num">6+</div>
+        <div class="stat-label">TCS Awards</div>
+      </div>
+      <div>
+        <div class="stat-num">500+</div>
+        <div class="stat-label">Issues Resolved / Week</div>
+      </div>
+      <div>
+        <div class="stat-num">30%</div>
+        <div class="stat-label">Effort Reduction via Automation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-header reveal">
+    <span class="section-tag">01 — About Me</span>
+    <h2>Driven by Data,<br>Guided by Curiosity</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>
+        I'm a high-performing Data Analyst at Tata Consultancy Services (TCS), currently contributing to Apple Maps data quality for one of the world's most-used navigation platforms.
+      </p>
+      <p>
+        My expertise spans large-scale spatial data analysis, Python automation, EDA, KPI reporting, and data pipeline design. I translate raw, complex datasets into business decisions that matter.
+      </p>
+      <p>
+        Alongside my professional role, I'm pursuing an M.Sc in Computer Science with a deep focus on applied data science — and actively growing my skills in AI, machine learning, and software development to shape the next chapter of my career.
+      </p>
+      <div class="awards-list">
+        <div class="award-item">
+          <div class="award-icon">★</div>
+          <div>
+            <div class="award-title">Beyond Performance Award (×2)</div>
+            <div class="award-meta">TCS — Jan 2026 &amp; Oct 2025</div>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-icon">💡</div>
+          <div>
+            <div class="award-title">TCS AI Idea Igniter &amp; Innovation Award</div>
+            <div class="award-meta">TCS — Nov 2025</div>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-icon">🤝</div>
+          <div>
+            <div class="award-title">Applause for Team Award</div>
+            <div class="award-meta">TCS — Oct 2025</div>
+          </div>
+        </div>
+        <div class="award-item">
+          <div class="award-icon">⚡</div>
+          <div>
+            <div class="award-title">TCS AI Hackathon 2025 Participant</div>
+            <div class="award-meta">End-to-end AI solution for real-world data challenges</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="about-highlights reveal">
+      <div class="highlight-card">
+        <h4>GIS &amp; Spatial Analysis</h4>
+        <p>Hands-on experience working with Apple Maps data quality pipelines, resolving 500+ spatial discrepancies weekly and improving map accuracy across global regions.</p>
+      </div>
+      <div class="highlight-card">
+        <h4>Python Automation</h4>
+        <p>Engineered automated QA pipelines in Python, cutting manual review effort by ~30% and ensuring consistent data integrity across high-volume production datasets.</p>
+      </div>
+      <div class="highlight-card">
+        <h4>AI &amp; Data Science Transition</h4>
+        <p>Actively building skills in machine learning, prompt engineering, and AI-powered solutions — certified in Generative AI, OpenAI API, and completing Google's Data Analytics program.</p>
+      </div>
+      <div class="highlight-card">
+        <h4>Stakeholder Communication</h4>
+        <p>Delivered KPI dashboards and actionable reports to engineering, product, and QA teams across time zones, bridging technical data with clear business narratives.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header reveal">
+    <span class="section-tag">02 — Skills</span>
+    <h2>Tools &amp; Technologies</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-grid reveal">
+    <div class="skill-category">
+      <div class="skill-category-title">Programming Languages</div>
+      <div class="skill-tags">
+        <span class="skill-tag core">Python</span>
+        <span class="skill-tag core">SQL</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-category-title">Data Analysis &amp; Libraries</div>
+      <div class="skill-tags">
+        <span class="skill-tag core">Pandas</span>
+        <span class="skill-tag core">NumPy</span>
+        <span class="skill-tag">Matplotlib</span>
+        <span class="skill-tag">Seaborn</span>
+        <span class="skill-tag">Scikit-learn</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-category-title">Visualisation &amp; BI</div>
+      <div class="skill-tags">
+        <span class="skill-tag core">Power BI</span>
+        <span class="skill-tag core">Tableau</span>
+        <span class="skill-tag">Excel (Pivot, Power Query)</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-category-title">Databases</div>
+      <div class="skill-tags">
+        <span class="skill-tag">MySQL</span>
+        <span class="skill-tag">PostgreSQL</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-category-title">Tools &amp; Platforms</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Jupyter Notebook</span>
+        <span class="skill-tag">Git &amp; GitHub</span>
+        <span class="skill-tag">VS Code</span>
+        <span class="skill-tag">GIS Tools</span>
+      </div>
+    </div>
+    <div class="skill-category">
+      <div class="skill-category-title">Core Competencies</div>
+      <div class="skill-tags">
+        <span class="skill-tag core">EDA</span>
+        <span class="skill-tag">Statistical Analysis</span>
+        <span class="skill-tag">Data Cleaning</span>
+        <span class="skill-tag">Dashboard Design</span>
+        <span class="skill-tag">KPI Reporting</span>
+        <span class="skill-tag">ETL</span>
+        <span class="skill-tag">Root-Cause Analysis</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header reveal">
+    <span class="section-tag">03 — Experience</span>
+    <h2>Professional Journey</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="exp-container reveal">
+    <div class="exp-card">
+      <div class="exp-header">
+        <div class="exp-role">Data Analyst</div>
+        <div class="exp-date">June 2024 — Present</div>
+      </div>
+      <div class="exp-company">Tata Consultancy Services (TCS)</div>
+      <div class="exp-client">Client: Apple Inc. — Apple Maps Data Quality &amp; Maintenance · Hyderabad, India</div>
+      <ul class="exp-bullets">
+        <li>Analyzed and resolved 500+ spatial data discrepancies weekly using Python (Pandas, NumPy) and GIS tools, directly improving Apple Maps accuracy across global regions.</li>
+        <li>Engineered automated data validation and QA pipelines in Python, reducing manual review effort by ~30% and ensuring consistent data integrity at scale.</li>
+        <li>Conducted in-depth root-cause analysis on mapping anomalies, identifying upstream data quality issues and implementing fixes that reduced recurring error rates.</li>
+        <li>Built and maintained reporting workflows to track KPIs, surface trends, and deliver actionable insights to engineering, product, and QA stakeholders across time zones.</li>
+        <li>Led compliance reviews for privacy and data integrity standards, contributing to audit-ready documentation and regulatory adherence.</li>
+        <li>Collaborated cross-functionally on iterative product updates, driving measurable improvements in route accuracy and real-time navigation performance.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-header reveal">
+    <span class="section-tag">04 — Projects</span>
+    <h2>Selected Work</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="projects-grid">
+    <div class="project-card reveal">
+      <div class="project-num">01</div>
+      <div class="project-title">Festive Season Sales Insights: Diwali Edition</div>
+      <p class="project-desc">
+        End-to-end EDA project uncovering purchasing patterns, top product categories, and customer demographics driving festive season revenue from raw Excel sales data.
+        Built a full data cleaning pipeline handling missing values, duplicates, and type inconsistencies — producing 10+ actionable visualisations.
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Pandas</span>
+        <span class="tech-tag">NumPy</span>
+        <span class="tech-tag">Matplotlib</span>
+        <span class="tech-tag">Seaborn</span>
+        <span class="tech-tag">Excel</span>
+      </div>
+      <a href="https://github.com/Anush1620" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+    <div class="project-card reveal">
+      <div class="project-num">02</div>
+      <div class="project-title">TCS AI Hackathon 2025 — AI-Powered Solution</div>
+      <p class="project-desc">
+        Designed and developed an AI-powered solution addressing real-world data challenges at TCS's internal hackathon. Demonstrated end-to-end problem-solving, analytical thinking, and rapid prototyping skills under competition conditions.
+      </p>
+      <div class="project-tech">
+        <span class="tech-tag">AI / ML</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Prompt Engineering</span>
+        <span class="tech-tag">Data Analysis</span>
+      </div>
+      <a href="https://github.com/Anush1620" target="_blank" class="project-link">View GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header reveal">
+    <span class="section-tag">05 — Education</span>
+    <h2>Academic Background</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="edu-grid reveal">
+    <div class="edu-card">
+      <div class="edu-degree">M.Sc in Computer Science</div>
+      <div class="edu-school">NKSPT Pathrikar Campus, Chh. Sambhajinagar</div>
+      <div class="edu-meta">
+        <span class="edu-badge year">2025 — Present</span>
+        <span class="edu-badge gpa">GPA 8.0 / 10.0</span>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-degree">B.Sc in Computer Science</div>
+      <div class="edu-school">Sardar Dalip Singh Vivekanand College of Arts and Science, Chh. Sambhajinagar</div>
+      <div class="edu-meta">
+        <span class="edu-badge year">2021 — 2024</span>
+        <span class="edu-badge gpa">GPA 7.2 / 10.0</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <div class="section-header reveal">
+    <span class="section-tag">06 — Certifications</span>
+    <h2>Continuous Learning</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="certs-grid reveal">
+    <div class="cert-card">
+      <div class="cert-icon google">G</div>
+      <div>
+        <div class="cert-title">Google Data Analytics Professional Certificate</div>
+        <div class="cert-issuer">Google / Coursera</div>
+        <span class="cert-status progress">In Progress — 2026</span>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon deloitte">D</div>
+      <div>
+        <div class="cert-title">Data Analytics Virtual Experience</div>
+        <div class="cert-issuer">Deloitte (Forage)</div>
+        <span class="cert-status done">Completed 2024</span>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon ms">M</div>
+      <div>
+        <div class="cert-title">Generative AI Fundamentals</div>
+        <div class="cert-issuer">Microsoft &amp; LinkedIn Learning</div>
+        <span class="cert-status done">Completed 2024</span>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon pmi">P</div>
+      <div>
+        <div class="cert-title">Project Management Foundations</div>
+        <div class="cert-issuer">LinkedIn Learning (PMI REP)</div>
+        <span class="cert-status done">Nov 2024</span>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon openai">O</div>
+      <div>
+        <div class="cert-title">Introduction to OpenAI API &amp; ChatGPT API for Developers</div>
+        <div class="cert-issuer">Udemy</div>
+        <span class="cert-status done">Nov 2025</span>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon prompt">PE</div>
+      <div>
+        <div class="cert-title">The Complete Prompt Engineering for AI Bootcamp</div>
+        <div class="cert-issuer">Udemy</div>
+        <span class="cert-status done">Nov 2025</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-wrapper">
+    <div class="contact-intro reveal">
+      <span class="section-tag">07 — Contact</span>
+      <h2>Let's Connect</h2>
+      <div class="section-line" style="margin-bottom: 24px;"></div>
+      <p>
+        Open to data analyst roles, software development opportunities, and collaborations at the intersection of GIS, AI, and data science. Feel free to reach out!
+      </p>
+    </div>
+    <div class="contact-links reveal">
+      <a href="mailto:irawaneanush@gmail.com" class="contact-link">
+        <div class="contact-link-icon cl-email">@</div>
+        <div class="contact-link-info">
+          <div class="link-label">Email</div>
+          <div class="link-val">irawaneanush@gmail.com</div>
+        </div>
+      </a>
+      <a href="tel:+919022714002" class="contact-link">
+        <div class="contact-link-icon cl-phone">📞</div>
+        <div class="contact-link-info">
+          <div class="link-label">Phone</div>
+          <div class="link-val">+91 9022714002</div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Anush Irawane · Hyderabad, Telangana · Built with care</p>
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
